@@ -17,7 +17,7 @@ services:
       - ./front-end:/app
     ports: 
       - 21451:21451
-    command: npm run dev 
+    command: bash -c "npm install && npm run dev"
 
   postgres:
     container_name: blog-postgres
