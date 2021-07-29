@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  back-end:
+    container_name: blog-back-end
+    build: ./back-end/
+    volumes: 
+      - ./back-end:/app
+    ports: 
+      - 21450:21450
+    command: cargo watch -x check -x test -x run 
+
+  front-end:
+    container_name: blog-front-end
+    build: ./front-end/
+    volumes: 
+      - ./front-end:/app
+    ports: 
+      - 21451:21451
+    command: npm run dev 
+
+  postgres:
+    container_name: blog-postgres
+    image: postgres
+    volumes: 
+      - ./database:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: test
+    ports: 
+      - 5432:5432
