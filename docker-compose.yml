@@ -7,7 +7,7 @@ services:
     volumes: 
       - ./back-end:/app
     ports: 
-      - 21450:21450
+      - 21452:21452
     command: cargo watch -x check -x test -x run 
 
   front-end:
